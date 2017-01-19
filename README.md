@@ -6,3 +6,4 @@ This project entails the use of:
 - static file(s)
 - form validation
 - redirecting
+- Optional styling with BOOTSTRAP
