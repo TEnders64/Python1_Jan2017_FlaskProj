@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show User Page</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='bootstrap.css') }}">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+						<table class="table">
+						{% for category,message in messages %}
+							<tr class="{{category}}">
+								<td>{{message}}</td>
+							</tr>
+						{% endfor %}
+						</table>
+					{% endif %}
+				{% endwith %}
+				<h3>Your Information</h3>
+				<table class="table">
+					<thead>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{session['first_name']}}</td>
+							<td>{{session['last_name']}}</td>
+							<td>{{session['email']}}</td>
+						</tr>
+					</tbody>	
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

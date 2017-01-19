@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create a User</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='bootstrap.css') }}">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<h1>Welcome to Our Awesome App!</h1>
+				<form action="/create_user" method="post">
+					<div class="form-group">
+						<label for="first">First Name:</label>
+						<input id="first" class="form-control" type="text" name="first_name">
+					</div>
+					<div class="form-group">
+						<label for="last">Last Name:</label>
+						<input id="last" class="form-control" type="text" name="last_name">
+					</div>
+					<div class="form-group">
+						<label for="email">Email:</label>
+						<input id="email" class="form-control" type="text" name="email">
+					</div>
+					<div class="form-group">
+						<input class="form-control btn-success" type="submit" value="Create User">
+					</div>
+				</form>
+				{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+						<table class="table">
+						{% for category,message in messages %}
+							<tr class="{{category}}">
+								<td>{{message}}</td>
+							</tr>
+						{% endfor %}
+						</table>
+					{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>
